@@ -1,33 +1,42 @@
 <!DOCTYPE html>
-<head>
-<meta charset="utf-8">
-</head>
-<body>
-    
-        <input type="text" id="idInput"><br>
-        <button onclick="clickstart()">Start</button>
-        <button onclick="clickstop()">Stop</button><br>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <input type="text" id="idInput" /><br />
+    <button onclick="clickstart()">Start</button>
+    <button onclick="clickstop()">Stop</button>
+    <button onclick="current()">Current</button><br />
 
-      <script>
-        let i;
-        function clickstart(){
-          var time = document.getElementById("idInput").value;
+    <span id="remaining"></span><br />
+    <span id="current"></span>
+
+    <script>
+      let currentTime;
+      let i;
+
+      function clickstart() {
+        var time = document.getElementById("idInput").value;
+        i = setInterval(function () {
           console.log(time);
-          i = setInterval(function(){
-            console.log(time);
-            document.getElementById("remaining").innerText = time;
-            time = time - 1;
-            if (time === 0) {
-              clearInterval(i);
-            }
-          }, 1000)
-        }  
-        
-      function clickstop(){
+          document.getElementById("remaining").innerText = time;
+          if (time === 0) {
+            clearInterval(i);
+          }
+          time = time - 1;
+        }, 1000);
+      }
+
+      function clickstop() {
         clearInterval(i);
       }
-      </script>
 
-      <span id="remaining"></span>  
-</body>
+      function current() {
+        currentTime = document.getElementById("remaining").innerText;
+        console.log(currentTime);
+        document.getElementById("current").innerText = currentTime;
+      }
+    </script>
+  </body>
 </html>
