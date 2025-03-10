@@ -9,25 +9,20 @@
         <button onclick="clickstop()">Stop</button><br>
 
       <script>
-        var time;
+        let i;
         function clickstart(){
           var time = document.getElementById("idInput").value;
           console.log(time);
-      
-  
-      function Timer() {
-        document.getElementById("remaining").innerText = time;
-        console.log(time);
-        time = time - 1; //giam 1 giay
-        
-        
-        if (time === -1) {
-            clearInterval(i); //dung vong lap khi time = 0
-          } 
-      }
-        
-      var i = setInterval(Timer, 1000); // intervalID
+          i = setInterval(function(){
+            console.log(time);
+            document.getElementById("remaining").innerText = time;
+            time = time - 1;
+            if (time === 0) {
+              clearInterval(i);
+            }
+          }, 1000)
         }  
+        
       function clickstop(){
         clearInterval(i);
       }
