@@ -3,23 +3,36 @@
 <meta charset="utf-8">
 </head>
 <body>
-    <script>
-      
-      var time = 10;
-      function Timer() {
-        console.log(time); //hien thi
-        time = time - 1; //giam 1 giay
-        if (time === -1) {
-          clearInterval(i); //dung vong lap khi time = 0
-        }
-      }
-      
-      var i = setInterval(Timer, 1000); // intervalID
-      
-      console.log(time);
-    </script>
+    
         <input type="text" id="idInput"><br>
-        <input type="submit" id="buttonStart" value="Start" onclick="click()">
-        <input type="submit" id="buttonStop" value="Stop">
+        <button onclick="clickstart()">Start</button>
+        <button onclick="clickstop()">Stop</button><br>
+
+      <script>
+        var time;
+        function clickstart(){
+          var time = document.getElementById("idInput").value;
+          console.log(time);
+      
+  
+      function Timer() {
+        document.getElementById("remaining").innerText = time;
+        console.log(time);
+        time = time - 1; //giam 1 giay
+        
+        
+        if (time === -1) {
+            clearInterval(i); //dung vong lap khi time = 0
+          } 
+      }
+        
+      var i = setInterval(Timer, 1000); // intervalID
+        }  
+      function clickstop(){
+        clearInterval(i);
+      }
+      </script>
+
+      <span id="remaining"></span>  
 </body>
 </html>
