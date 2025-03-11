@@ -7,7 +7,8 @@
     <input type="text" id="idInput" /><br />
     <button onclick="clickstart()">Start</button>
     <button onclick="clickstop()">Stop</button>
-    <button onclick="current()">Current</button><br />
+    <button onclick="current()">Current</button>
+    <button onclick="resume()">Resume</button><br />
 
     <span id="remaining"></span><br />
     <span id="current"></span>
@@ -36,6 +37,18 @@
         currentTime = document.getElementById("remaining").innerText;
         console.log(currentTime);
         document.getElementById("current").innerText = currentTime;
+      }
+
+      function resume() {
+        time = document.getElementById("remaining").innerText;
+        console.log(time);
+        i = setInterval(function () {
+          document.getElementById("remaining").innerText = time;
+          if (time === 0) {
+            clearInterval(i);
+          }
+          time = time - 1;
+        }, 1000);
       }
     </script>
   </body>
